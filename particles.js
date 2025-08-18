@@ -1,14 +1,21 @@
-// tsParticles CDN loader
+
+// tsParticles loader for CDN
 // https://particles.js.org/
 document.addEventListener('DOMContentLoaded', function() {
-  const particlesScript = document.createElement('script');
-  particlesScript.src = 'https://cdn.jsdelivr.net/npm/tsparticles-engine@3/tsparticles.engine.min.js';
-  particlesScript.onload = function() {
-    const loaderScript = document.createElement('script');
-    loaderScript.src = 'https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.min.js';
-    loaderScript.onload = function() {
+  // Check if the container exists
+  if (!document.getElementById('tsparticles')) {
+    const div = document.createElement('div');
+    div.id = 'tsparticles';
+    document.body.prepend(div);
+  }
+
+  // Load tsParticles from CDN (single bundle)
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
+  script.onload = function() {
+    if (window.tsParticles && window.tsParticles.load) {
       window.tsParticles.load('tsparticles', {
-        fullScreen: { enable: true, zIndex: 0 },
+        fullScreen: { enable: true, zIndex: 1 },
         background: { color: 'transparent' },
         particles: {
           number: { value: 60, density: { enable: true, area: 800 } },
@@ -31,8 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         detectRetina: true
       });
-    };
-    document.body.appendChild(loaderScript);
+    } else {
+      console.error('tsParticles failed to load.');
+    }
   };
-  document.body.appendChild(particlesScript);
+  script.onerror = function() {
+    console.error('Failed to load tsParticles script.');
+  };
+  document.body.appendChild(script);
 });
