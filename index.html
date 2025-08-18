@@ -2,14 +2,34 @@
 <html>
 <head>
 	<title>Gradient Background</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body id="gradient">
-	<h1>Background Generator</h1>
-	<input class="color1" type="color" name="color1" value="#00ff00">
-	<input class="color2" type="color" name="color2" value="#ff0000">
-	<h2>Current CSS Background</h2>
-	<h3></h3>
+	<div id="tsparticles"></div>
+	<div class="container animate-in">
+		<h1><span class="neon">Background Generator</span></h1>
+		<form class="color-pickers" autocomplete="off">
+			<label for="color1" class="picker-label">Color 1
+				<input class="color1" id="color1" type="color" name="color1" value="#00ff00">
+			</label>
+			<label for="color2" class="picker-label">Color 2
+				<input class="color2" id="color2" type="color" name="color2" value="#ff0000">
+			</label>
+		</form>
+		<h2>Current CSS Background</h2>
+		<div class="css-output-row">
+			<h3></h3>
+			<button class="copy-btn" aria-label="Copy CSS" title="Copy CSS"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+		</div>
+		<div id="toast" role="status" aria-live="polite"></div>
+	</div>
+	<footer class="footer">
+		<a href="https://github.com/Arnabx-Dev/Background" target="_blank" rel="noopener" class="footer-link">View on GitHub</a>
+		<span class="footer-credit">&copy; 2025 Background Generator</span>
+	</footer>
+	<script type="text/javascript" src="particles.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>

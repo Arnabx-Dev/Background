@@ -1,11 +1,247 @@
+
 body {
-	font: 'Raleway', sans-serif;
-    color: rgba(0,0,0,.5);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', 'Orbitron', Arial, sans-serif;
+    background: linear-gradient(120deg, #0f2027, #2c5364 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e0e0e0;
+    letter-spacing: 0.1em;
+    transition: background 0.5s;
+    min-width: 100vw;
+    box-sizing: border-box;
+}
+
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    background: rgba(20, 30, 48, 0.7);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 2.5rem 3rem;
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .5em;
-    top: 15%;
-	background: linear-gradient(to right, red , yellow); /* Standard syntax */
+    min-width: 340px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) 0.1s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+h1 {
+    font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 8px #00ffe7, 0 0 16px #00ffe7;
+}
+
+.neon {
+    color: #00ffe7;
+    text-shadow: 0 0 8px #00ffe7, 0 0 16px #00ffe7, 0 0 32px #00ffe7;
+}
+
+.color-pickers {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.picker-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1em;
+    color: #00ffe7;
+    font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+    letter-spacing: 0.05em;
+    margin: 0 0.5em;
+    cursor: pointer;
+    user-select: none;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00ffe7, 0 0 24px #00ffe7;
+    cursor: pointer;
+    transition: box-shadow 0.3s, transform 0.3s;
+    outline: none;
+    margin-top: 0.5em;
+    background: none;
+}
+input[type="color"]:hover, input[type="color"]:focus {
+    box-shadow: 0 0 24px #00ffe7, 0 0 48px #00ffe7;
+    transform: scale(1.1);
+    outline: 2px solid #00ffe7;
+}
+
+
+h2 {
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #00ffe7;
+    margin-bottom: 0.5rem;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 8px #00ffe7;
+    margin-top: 0.5em;
+}
+
+.css-output-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-family: 'Fira Mono', 'Roboto Mono', monospace;
+    color: #fff;
+    background: rgba(0,255,231,0.08);
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    margin: 0.5em auto 0;
+    width: fit-content;
+    font-size: 1em;
+    box-shadow: 0 0 8px #00ffe7;
+    word-break: break-all;
+    min-width: 180px;
+    text-align: left;
+    border: 1px solid rgba(0,255,231,0.15);
+}
+
+.copy-btn {
+    background: rgba(0,255,231,0.12);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5em 0.7em;
+    color: #00ffe7;
+    cursor: pointer;
+    box-shadow: 0 0 8px #00ffe744;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+.copy-btn:hover, .copy-btn:focus {
+    background: #00ffe7;
+    color: #222;
+    box-shadow: 0 0 16px #00ffe7;
+    transform: scale(1.08);
+}
+
+#toast {
+    position: fixed;
+    bottom: 2.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,255,231,0.95);
+    color: #222;
+    padding: 0.7em 1.5em;
+    border-radius: 8px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1em;
+    box-shadow: 0 0 16px #00ffe7;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity 0.4s, bottom 0.4s;
+}
+#toast.show {
+    opacity: 1;
+    bottom: 3.5em;
+    pointer-events: auto;
+}
+
+.footer {
+    width: 100vw;
+    text-align: center;
+    padding: 1em 0 0.5em 0;
+    color: #00ffe7cc;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    z-index: 2;
+    position: relative;
+    margin-top: 2em;
+}
+.footer-link {
+    color: #00ffe7;
+    text-decoration: none;
+    margin-right: 1em;
+    transition: color 0.2s;
+}
+.footer-link:hover, .footer-link:focus {
+    color: #fff;
+    text-decoration: underline;
+}
+.footer-credit {
+    color: #00ffe7aa;
+}
+
+h3 {
+    font-family: 'Fira Mono', 'Roboto Mono', monospace;
+    color: #fff;
+    background: rgba(0,255,231,0.08);
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    margin: 0.5em auto 0;
+    width: fit-content;
+    font-size: 1em;
+    box-shadow: 0 0 8px #00ffe7;
+    word-break: break-all;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1.2rem 0.5rem;
+        min-width: unset;
+    }
+    .color-pickers {
+        gap: 1rem;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    .css-output-row {
+        flex-direction: column;
+        gap: 0.2em;
+    }
+    #toast {
+        font-size: 0.95em;
+        padding: 0.6em 1em;
+    }
 }
 
 h1 {
