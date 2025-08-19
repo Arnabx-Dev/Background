@@ -34,7 +34,10 @@ body {
     border: 1px solid rgba(255,255,255,0.18);
     padding: 2.5rem 3rem;
     text-align: center;
-    min-width: 340px;
+    min-width: 0;
+    max-width: 98vw;
+    width: 100%;
+    box-sizing: border-box;
     position: relative;
     z-index: 2;
     animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) 0.1s both;
@@ -66,8 +69,8 @@ h1 {
 }
 
 .neon {
-    color: #00ffe7;
-    text-shadow: 0 0 8px #00ffe7, 0 0 16px #00ffe7, 0 0 32px #00ffe7;
+    color: #000000;
+    text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 32px #ffffff;
 }
 
 .color-pickers {
@@ -229,16 +232,29 @@ h3 {
     word-break: break-all;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .container {
-        padding: 1.2rem 0.5rem;
-        min-width: unset;
-    }
-    .color-pickers {
-        gap: 1rem;
+        padding: 1.5rem 1rem;
+        max-width: 98vw;
     }
     h1 {
-        font-size: 1.5em;
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem 0.2rem;
+        max-width: 100vw;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .color-pickers {
+        gap: 0.7rem;
+    }
+    h1 {
+        font-size: 1.2em;
+        padding: 0.5em 0.2em;
     }
     .css-output-row {
         flex-direction: column;
@@ -248,22 +264,25 @@ h3 {
         font-size: 0.95em;
         padding: 0.6em 1em;
     }
+    input[type="color"] {
+        width: 44px;
+        height: 44px;
+    }
+    .picker-label {
+        font-size: 0.95em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    h3 {
+        font-size: 0.95em;
+        padding: 0.5em 0.5em;
+        min-width: 120px;
+    }
+    .footer {
+        font-size: 0.95em;
+        padding: 0.7em 0 0.3em 0;
+    }
 }
 
-h1 {
-    font: 600 3.5em 'Raleway', sans-serif;
-    color: rgba(0,0,0,.5);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .5em;
-    width: 100%;
-}
 
-h3 {
-	font: 900 1em 'Raleway', sans-serif;
-    color: rgba(0,0,0,.5);
-    text-align: center;
-    text-transform: none;
-    letter-spacing: 0.01em;
-
-}
