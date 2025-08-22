@@ -1,0 +1,21 @@
+{
+  "name": "background",
+  "version": "1.0.0",
+  "description": "A sleek web app to generate beautiful CSS linear-gradient backgrounds with live preview, color pickers, and instant CSS copy. Features animated neon headings and interactive particles for a modern look.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arnabx-Dev/Background.git"
+  },
+  "author": "Arnabx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arnabx-Dev/Background/issues"
+  },
+  "homepage": "https://github.com/Arnabx-Dev/Background#readme",
+  "dependencies": {
+  }
+}
